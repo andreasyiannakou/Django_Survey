@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
+    <h1>Available Forms</h1>
+    {% if object_list %}
+    <div id="home">
+        {% for form in object_list %}
+        <ul>
+            <li>
+                <a href="{% url 'custom-form' form_pk=form.pk %}">{{ form.title }}</a>
+            </li>
+            <li>
+                <a href="{% url 'form-responses' form_pk=form.pk %}">See Responses</a>
+            </li>
+            <li>
+                <a href="{% url 'edit-form' form_pk=form.pk %}">Edit Form</a>
+            </li>
+        </ul>
+        {% endfor %}
+        <br />
+    </div>
+    {% endif %}
+{% endblock %}
